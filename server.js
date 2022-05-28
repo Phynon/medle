@@ -52,9 +52,9 @@ const getPuzzleId = (index) => {
   const lastChar = index[index.length-1];
   let suffix = '';
   let id = 0;
-  if (lastChar >= 'a' && lastChar <= 'z') {
-    suffix = lastChar;
-    id = parseInt(index.toString().substring(0, index.length-1));
+  if (lastChar < '0' || lastChar > '9') {
+    suffix = index.toString().substring(3, index.length);
+    id = parseInt(index.toString().substring(0, 3));
   } else {
     id = parseInt(index.toString().padStart(3, '0'));
   }
@@ -121,7 +121,7 @@ const servePuzzle = async (req, puzzleId, checkToday) => {
   }
   puzzleContents.i18nVars = i18n;
 
-  const isDaily = !!puzzleId.match(/^[0-9]{3,}[a-z]?$/g);
+  const isDaily = !!puzzleId.match(/^[0-9]{3,}[a-zA-Z]*$/g);
   puzzleContents.guideToToday =
     (checkToday && isDaily && parseInt(puzzleId) < parseInt(today));
   puzzleContents.isDaily = isDaily;
@@ -132,7 +132,7 @@ const servePuzzle = async (req, puzzleId, checkToday) => {
   for (const entry of puzzleNames) {
     if (entry.isDirectory) continue;
     const fileName = entry.name;
-    const isValid = !!fileName.match(/^[0-9]{3,}[a-z]?\.yml$/g);
+    const isValid = !!fileName.match(/^[0-9]{3,}[a-zA-Z]*\.yml$/g);
     if (!isValid) continue;
     let index = fileName.substring(0, fileName.length - 4);  // remove the file extension '.yml'
     let decomposition = getPuzzleId(index);

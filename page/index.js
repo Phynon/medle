@@ -689,9 +689,9 @@ const getPuzzleId = (index) => {
   const lastChar = index[index.length-1];
   let suffix = '';
   let id = 0;
-  if (lastChar >= 'a' && lastChar <= 'z') {
-    suffix = lastChar;
-    id = parseInt(index.toString().substring(0, index.length-1));
+  if (lastChar < '0' || lastChar > '9') {
+    suffix = index.toString().substring(3, index.length);
+    id = parseInt(index.toString().substring(0, 3));
   } else {
     id = parseInt(index.toString().padStart(3, '0'));
   }
@@ -738,7 +738,28 @@ if (isDaily) {
   }
   let decomposition = getPuzzleId(puzzleId);
   let id = decomposition[0].toString().padStart(3, '0');
-  let suffix = (decomposition[1] == '') ? 'a' : String.fromCharCode(decomposition[1].charCodeAt(0) + 1);
+  let dailyPuzzleIds = []
+  for (let e_id of availablePuzzleIds) {
+    if (e_id.includes(id)) {
+      dailyPuzzleIds.push(e_id)
+    }
+  }
+  let suffix = ''
+  if (decomposition[1] == '') {
+    if (dailyPuzzleIds.length === 1)
+      suffix = 'none'
+    else
+      suffix = dailyPuzzleIds[1].substring(3, dailyPuzzleIds[1].length)
+  }
+  else {
+    if (dailyPuzzleIds.indexOf(id + decomposition[1]) === dailyPuzzleIds.length - 1)
+      suffix = 'none'
+    else {
+      nextidx = dailyPuzzleIds.indexOf(id + decomposition[1]) + 1
+      suffix = dailyPuzzleIds[nextidx].substring(3, dailyPuzzleIds[nextidx].length)
+    }
+  }
+  // suffix = (decomposition[1] == '') ? 'a' : String.fromCharCode(decomposition[1].charCodeAt(0) + 1);
   if (availablePuzzleIds.indexOf(id + suffix) != -1) {
     let container = document.getElementById('next-puzzle-container');
     container.classList.remove('hidden')

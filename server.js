@@ -121,7 +121,7 @@ const servePuzzle = async (req, puzzleId, checkToday) => {
   }
   puzzleContents.i18nVars = i18n;
 
-  const isDaily = !!puzzleId.match(/^[0-9]{3,}[a-zA-Z]*$/g);
+  const isDaily = !!puzzleId.match(/^[0-9]{3,}[-]*[a-zA-Z]*[0-9]*[a-zA-Z]*$/g);
   puzzleContents.guideToToday =
     (checkToday && isDaily && parseInt(puzzleId) < parseInt(today));
   puzzleContents.isDaily = isDaily;
@@ -132,7 +132,7 @@ const servePuzzle = async (req, puzzleId, checkToday) => {
   for (const entry of puzzleNames) {
     if (entry.isDirectory) continue;
     const fileName = entry.name;
-    const isValid = !!fileName.match(/^[0-9]{3,}[a-zA-Z]*\.yml$/g);
+    const isValid = !!fileName.match(/^[0-9]{3,}[-]*[a-zA-Z]*[0-9]*[a-zA-Z]*\.yml$/g);
     if (!isValid) continue;
     let index = fileName.substring(0, fileName.length - 4);  // remove the file extension '.yml'
     let decomposition = getPuzzleId(index);
@@ -141,7 +141,7 @@ const servePuzzle = async (req, puzzleId, checkToday) => {
   }
   puzzleContents.availablePuzzleIds = validPuzzleIds;
 
-  log(`puzzle ${puzzleId} ${analytics(req)}`);
+  log(`puzzle ${puzzleId} ${analytics(req)} from ${req.headers.get('x-real-ip')}`);
   const pageContents = indexTemplate(puzzleContents, etaConfig);
   return new Response(pageContents, {
     status: 200,
@@ -169,7 +169,7 @@ const handler = async (req) => {
       return serveFile(req, 'puzzles/reveal/' + fileName);
     }
     // Custom puzzle
-    if (url.pathname.match(/^\/[A-Za-z0-9]+$/g)) {
+    if (url.pathname.match(/^\/[A-Za-z0-9-]+$/g)) {
       const puzzleId = url.pathname.substring(1);
       if (!debug && parseInt(puzzleId) > todaysPuzzleIndex())
         return noSuchPuzzle();
@@ -180,7 +180,7 @@ const handler = async (req) => {
     if (url.pathname === '/analytics') {
       try {
         const body = await req.formData();
-        log(`analy ${body.get('puzzle')} ${body.get('t')} ${analytics(req)}`);
+        log(`analy ${body.get('puzzle')} from ${req.headers.get('x-real-ip')} ${body.get('t')} ${analytics(req)}`);
       } catch {
         return new Response('', { status: 400 });
       }

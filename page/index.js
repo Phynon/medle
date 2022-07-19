@@ -543,7 +543,7 @@ const startGame = () => {
     text: () => {
       btnShare.classList.add('copied');
       const prefix = `VOCALO Medle ${puzzleId} ${succeeded ? attResults.length : 'X'}/${attemptsLimit}\n`;
-      const suffix = `http://medle.phystack.top/` +
+      const suffix = `https://medle.phystack.top/` +
         (puzzleId === todayDaily ? '' : puzzleId);
       return prefix +
         attResults.map((result) => result.map((r) => {

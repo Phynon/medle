@@ -43,6 +43,7 @@ window.languages = [
     'opt-source': '程序源码',
     'opt-dist': '依照木兰公共许可证分发',
     'next-puzzle': '这一天的下一道谜题：',
+    'hint-title': '提示',
   }],
   ['en', 'English', {
     'loading': 'Loading…',
@@ -88,5 +89,6 @@ window.languages = [
     'opt-source': 'Program source',
     'opt-dist': ' distributed under the Mulan Public License',
     'next-puzzle': 'Next puzzle of this day:',
+    'hint-title': 'Hint',
   }],
 ];

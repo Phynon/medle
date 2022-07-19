@@ -792,6 +792,12 @@ document.getElementById('icon-btn-options').addEventListener('click', () => {
   showModal('modal-options');
 });
 
+if (hasHint) {
+  document.getElementById('icon-btn-hint').addEventListener('click', () => {
+    showModal('modal-hint');
+});
+}
+
 const initToggleButton = (ids, cfgKey, defaultVal, fn) => {
   if (typeof ids === 'string') ids = [ids];
   const btns = ids.map((id) => document.getElementById(id));

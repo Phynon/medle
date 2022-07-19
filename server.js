@@ -168,6 +168,14 @@ const handler = async (req) => {
       const fileName = url.pathname.substring('/reveal/'.length);
       return serveFile(req, 'puzzles/reveal/' + fileName);
     }
+    if (url.pathname.startsWith('/revealimage/')) {
+      const fileName = url.pathname.substring('/revealimage/'.length);
+      return serveFile(req, 'puzzles/revealimage/' + fileName);
+    }
+    if (url.pathname.startsWith('/hintimage/')) {
+      const fileName = url.pathname.substring('/hintimage/'.length);
+      return serveFile(req, 'puzzles/hintimage/' + fileName);
+    }
     // Custom puzzle
     if (url.pathname.match(/^\/[A-Za-z0-9-]+$/g)) {
       const puzzleId = url.pathname.substring(1);

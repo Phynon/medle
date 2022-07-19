@@ -14,7 +14,12 @@
     <div id='page-title'>VOCALO Medle <%= it.id %></div>
     <div id='icon-btns-container'>
       <div id='icon-btn-help'>?</div>
+      <% if (it['zh-Hans'].hint) { %>
+      <div id='icon-btn-hint'class='iconfont'>&#x1f4a1;</div>
+      <% } %>
+
       <div id='icon-btn-options' class='iconfont'>&#xf013;</div>
+
       <% if (it.isDaily) { %>
       <div id='icon-btn-archive' class='iconfont'>&#x1f4c6;</div>
       <% } %>
@@ -331,6 +336,17 @@
       <p style='color: #999' data-t='daily-update'></p>
       <div class='bottom-shadow'></div>
     </div>
+    <% if (it['zh-Hans'].hint) { %>
+    <div class='modal hidden' id='modal-hint'>
+      <p class='title'>VOCALO Medle <%= it.id %></p>
+      <p id='reveal-author'><span style='margin-right: 9px;' class='iconfont'>&#x1f4a1;</span><span data-t='hint-title'></p>
+      <p id='reveal-desc' data-t='=hint'></p>
+      <% if (it['zh-Hans'].hintimage) { %>
+        <img src='/hintimage/<%= it.id %>.jpg'>
+      <% } %>
+      <div class='bottom-shadow'></div>
+    </div>
+    <% } %>
     <div class='modal hidden' id='modal-finish'>
       <p class='title'>VOCALO Medle <%= it.id %></p>
       <p id='reveal-title'><span style='margin-right: 9px;' class='iconfont'>&#x1f3b5;</span><strong
@@ -350,8 +366,8 @@
         </div>
       </div>
       <p id='reveal-desc' data-t='=desc'></p>
-      <% if (it['zh-Hans'].image) { %>
-      <img src='/reveal/<%= it.id %>.jpg' data-t='=image'>
+      <% if (it['zh-Hans'].revealimage) { %>
+      <img src='/revealimage/<%= it.id %>.jpg'>
       <% } %>
       <div id='btn-share'>
         <span id='btn-share-text-share'><span class='iconfont' style='visibility: hidden'>&#x2714;</span><span
@@ -449,6 +465,7 @@ const tuneRevealOffset = <%= it.tuneRevealOffset %>;
 const isDaily = <%= it.isDaily %>;
 const guideToToday = <%= it.guideToToday %>;
 const todayDaily = <%~ JSON.stringify(it.todayDaily) %>;
+const hasHint = <%~ !(!it['zh-Hans'].hint || it['zh-Hans'].hint.length === 0) %>;
 
 const availablePuzzleIds = <%~ JSON.stringify(it.availablePuzzleIds) %>;
 

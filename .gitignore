@@ -1,9 +1,0 @@
-.vscode/launch.json
-.vscode/sftp.json
-.gitignore
-puzzles
-!puzzles/tatoeba.yml
-!puzzles/reveal/tatoeba.mp3
-!puzzles/hintimage/tatoeba.jpg
-!puzzles/revealimage/tatoeba.jpg
-page/a.css

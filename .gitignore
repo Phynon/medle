@@ -1,3 +1,7 @@
 .vscode/launch.json
 .vscode/sftp.json
 .gitignore
+puzzles
+!puzzles/test.yml
+!puzzles/reveal/test.mp3
+page/a.css

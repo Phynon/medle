@@ -1,27 +1,35 @@
 tune:
-  - [1, 1]
-  - [5, 4, -2]
-  - [5, 4, -2.67]
-  - [5, 4, 0.67]
-  - [5, 2.05]
-  - [4, 1.28]
-  - [3b, 1]
-tuneBeatDur: 150
-tunePitchBase: F#4
-metronome: [1, 4]
+  - [1+, 2]
+  - [7, 2]
+  - [5, 2]
+  - [3, 2]
+  - [5, 3]
+  - [6, 3]
+  - [3+, 1]
+  - [2+, 4]
+  - [1+, 1]
+  - [7, 2]
+  - [1+, 1]
+  - [1+, 4]
 
-tuneRevealBeatDur: 119
-tuneRevealOffset: 2630
+tuneBeatDur: 160
+tunePitchBase: G4
+metronome: [0, 2]
+
+tuneRevealBeatDur: 158
+tuneRevealOffset: 4632
 
 zh-Hans:
-  title: 限りなく灰色へ
-  author: すりぃ, 鏡音レン
-  desc: すりぃ 第 13 作, 2021 年投稿, 年内达成传说.
-        歌曲描绘了自认为没有才能, 生活几乎失去意义的人, 最终直面自己的不足, 从内心中找回了生活的动机.
-en:
-  title: Infinitely Gray
-  author: すりぃ, 鏡音レン
-  desc: This song is the 13rd work of すりぃ, uploaded in 2021, and has entered the Hall of Legend and exceeded over 10 million YouTube views.
-        The song is sung from the perspective of a person who believes they are talentless and incapable and has seemingly lost their meaning to live, but ultimately finds within themselves the motivation to continue living life in spite of their flaws.
+  title: 青く駆けろ！
+  author: まらしぃ, 初音ミク
+  desc: >
+        
 
-curator: 湖中
+en:
+  title: Run into the Blue!
+  author: marasy, Hatsune Miku
+  desc: >
+        
+
+
+curator: Aoharu/friends

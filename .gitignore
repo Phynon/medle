@@ -2,6 +2,7 @@
 .vscode/sftp.json
 misc/*/.gitignore
 puzzles/*/*
+puzzles/*.*
 !puzzles/tatoeba.yml
 puzzles/hintimage/*
 !puzzles/hintimage/tatoeba.jpg

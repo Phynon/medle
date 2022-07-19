@@ -1,0 +1,31 @@
+tune:
+  - [5-, 1]
+  - [1, 1]
+  - [2, 1]
+  - [2, 4, 3, 3, -8]
+  - [1, 3, 4, 2, 1]
+  - [2, 1]
+  - [3, 2]
+tuneBeatDur: 250
+tunePitchBase: Ab4
+metronome: [3, 2]
+
+tuneRevealBeatDur: 238
+tuneRevealOffset: 6330
+
+zh-Hans:
+  title: タイムマシン
+  author: 1640mP (40mP 164), 初音ミク
+  hint: >
+        🕘⚙
+  hintimage: true
+  revealimage: true      
+  desc: 一首合作曲.
+en:
+  title: タイムマシン
+  author: 1640mP (40mP 164), 初音ミク
+  hint: >
+        🕘⚙
+  desc: 一首合作曲.
+
+curator: Dev Man 1

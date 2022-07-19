@@ -1,0 +1,13 @@
+.vscode/launch.json
+.vscode/sftp.json
+misc/*/.gitignore
+puzzles/*/*
+!puzzles/tatoeba.yml
+puzzles/hintimage/*
+!puzzles/hintimage/tatoeba.jpg
+puzzles/revealimage/*
+puzzles/reveal/*
+!puzzles/reveal/tatoeba.mp3
+!puzzles/revealimage/tatoeba.jpg
+
+page/a.css

@@ -367,7 +367,12 @@
       </div>
       <p id='reveal-desc' data-t='=desc'></p>
       <% if (it['zh-Hans'].revealimage) { %>
-      <img src='/revealimage/<%= it.id %>.jpg'>
+        <% if (it.link) { %>
+        <a href='<%= it.link %>'><img src='/revealimage/<%= it.id %>.jpg'></a>
+        <% }
+        else { %>
+          <img src='/revealimage/<%= it.id %>.jpg'>
+        <% } %>
       <% } %>
       <div id='btn-share'>
         <span id='btn-share-text-share'><span class='iconfont' style='visibility: hidden'>&#x2714;</span><span
